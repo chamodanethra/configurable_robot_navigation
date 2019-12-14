@@ -102,28 +102,38 @@ class RoboTable extends Component {
           for (let idx = 0; idx < this.props.selectedGridSize; idx++){
             let cellID = `cell${i}-${idx}`
             if (this.state.coordinateY === i && this.state.coordinateX === idx) {
-                cell.push(<td key={cellID} id={cellID} className="robo" style={{backgroundColor: `${this.props.selectedColourHex}`}}> </td>)
+                cell.push(<td key={cellID} id={cellID} className="robo" style={{backgroundColor: `${this.props.selectedColourHex}`}}>
+                    <div className="cell"></div>
+                 </td>)
             } else {
               if (this.graph[i][idx] === 1) {
                 cell.push(!this.isClicked ? 
-                  <td key={cellID} id={cellID} className="unclickedSquare" onClick={(e) => this.onClickCell(i, idx, e)}> </td>
+                  <td key={cellID} id={cellID} className="unclickedSquare" onClick={(e) => this.onClickCell(i, idx, e)}>
+                      <div className="cell"></div> 
+                  </td>
                 :
-                <td key={cellID} id={cellID} className="clickedSquare" onClick={(e) => this.onClickCell(i, idx, e)}> </td>
+                <td key={cellID} id={cellID} className="clickedSquare" onClick={(e) => this.onClickCell(i, idx, e)}> 
+                    <div className="cell"></div>
+                </td>
                 )
               } else {
-                cell.push(<td key={cellID} id={cellID} className="barrier" > </td>)
+                cell.push(<td key={cellID} id={cellID} className="barrier" >
+                    <div className="cell"></div>
+                </td>)
               }
             }
           }
           rows.push(<tr key={i} id={rowID}>{cell}</tr>)
         }
         return(
-          <div className="grid-container">
-            <table id="simple-board">
-                <tbody>
-                  {rows}
-                </tbody>
-            </table>
+          <div className="outer-container">
+            <div className="grid-container">
+              <table id="simple-board">
+                  <tbody>
+                    {rows}
+                  </tbody>
+              </table>
+            </div>
           </div>
         )
     }

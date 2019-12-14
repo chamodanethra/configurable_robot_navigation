@@ -1,5 +1,5 @@
 {
-  "name": "configurable_robot_navigation",
+  "name": "configurable_robot_navigation_react-redux",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
